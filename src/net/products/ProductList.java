@@ -9,7 +9,7 @@ public class ProductList {
     private static Map<String, Product> productList = new HashMap<>();
 
     public static void add(String productName, Product product) {
-        if (product != null && productName != null) {
+        if (product != null && productName != null && !"".equals(productName)) {
             if (!productList.containsKey(productName)) {
                 productList.put(productName, product);
                 System.out.println(product.getName() + " - добавлен");
@@ -23,7 +23,7 @@ public class ProductList {
     }
 
     public static void remove(String productName) {
-        if (productName != null) {
+        if (productName != null && !"".equals(productName)) {
             if (productList.remove(productName) != null) {
                 System.out.println("Удаление продукта: " + productName + " прошло успешно.");
             } else {
@@ -34,8 +34,20 @@ public class ProductList {
         }
     }
 
+    public static Product getProduct(String productName) {
+        if (productName != null && !"".equals(productName)) {
+            if (productList.containsKey(productName)) {
+                return productList.get(productName);
+            } else {
+                throw new IllegalArgumentException(productName + " в списке нет");
+            }
+        } else {
+            throw new IllegalArgumentException("Продукт не может быть null");
+        }
+    }
+
     public static void setBay(String productName) {
-        if (productName != null) {
+        if (productName != null && !"".equals(productName)) {
             Product product = productList.getOrDefault(productName, null);
             if (product != null) {
                 product.setBayed(true);
