@@ -1,17 +1,20 @@
 package net.products;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductList {
-    private static List<Product> productList = new ArrayList<>();
+    private static Map<String, Product> productList = new HashMap<>();
 
-    public static void add(Product product) {
-        if (product != null) {
-            if (!productList.contains(product)) {
-                productList.add(product);
+    public static void add(String productName, Product product) {
+        if (product != null && productName != null) {
+            if (!productList.containsKey(productName)) {
+                productList.put(productName, product);
                 System.out.println(product.getName() + " - добавлен");
             } else {
+                // Зачем в этом месте выбрасывать исключение, если можно просто вывести информацию в консоль?
                 throw new IllegalArgumentException(product.getName() +  " - уже есть в списке!");
             }
         } else {
@@ -19,10 +22,10 @@ public class ProductList {
         }
     }
 
-    public static void remove(Product product) {
-        if (product != null) {
-            if (productList.remove(product)) {
-                System.out.println("Удаление продукта: " + product.getName() + " прошло успешно.");
+    public static void remove(String productName) {
+        if (productName != null) {
+            if (productList.remove(productName) != null) {
+                System.out.println("Удаление продукта: " + productName + " прошло успешно.");
             } else {
                 System.out.println("Такого продукта не нашлось в этом списке");
             }
@@ -31,16 +34,19 @@ public class ProductList {
         }
     }
 
-    public static void checkBay(Product product) {
-        if (product != null) {
-            productList.get(productList.indexOf(product)).setBayed(true);
-            System.out.println("Продукт: " + product.getName() + " помечен купленным.");
+    public static void setBay(String productName) {
+        if (productName != null) {
+            Product product = productList.getOrDefault(productName, null);
+            if (product != null) {
+                product.setBayed(true);
+                System.out.println("Продукт: " + product.getName() + " помечен купленным.");
+            }
         } else {
             throw new IllegalArgumentException("Продукт не может быть null");
         }
     }
 
-    public static List<Product> getProductList() {
+    public static Map<String, Product> getProductList() {
         return productList;
     }
 }
