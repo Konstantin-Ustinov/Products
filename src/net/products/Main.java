@@ -1,5 +1,7 @@
 package net.products;
 
+import net.products.collectionsTasks.Tasks;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
@@ -78,6 +80,9 @@ public class Main {
 
         System.out.println("Задания про числа в множестве");
         removeOddNumbersFromSet();
+
+        System.out.println("Задания на коллекции");
+        Tasks.task3_2();
     }
 
     private static void addToRecipes(Set<Recipe> recipes, Recipe recipe) {
