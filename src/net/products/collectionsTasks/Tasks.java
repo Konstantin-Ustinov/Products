@@ -27,4 +27,15 @@ public class Tasks {
         StringBuilder sb = new StringBuilder(str);
         return sb.reverse().toString();
     }
+
+    public static void telephoneDirectory() {
+        HashMap<String, Integer> telephoneDirectory = new HashMap<>();
+
+        var random = new Random();
+        for (int i = 0; i < 20; i++) {
+            telephoneDirectory.put("Имя " + i, random.nextInt(1000000000));
+        }
+
+        System.out.println(telephoneDirectory);
+    }
 }

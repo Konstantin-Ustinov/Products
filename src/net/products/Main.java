@@ -95,6 +95,9 @@ public class Main {
 
         System.out.println(passports.get(565656));
         System.out.println(passports.get(5865656));
+
+        System.out.println("3 урок задание 1");
+        Tasks.telephoneDirectory();
     }
 
     private static void addToRecipes(Set<Recipe> recipes, Recipe recipe) {
