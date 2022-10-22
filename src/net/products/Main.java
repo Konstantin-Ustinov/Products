@@ -1,11 +1,9 @@
 package net.products;
 
+import net.products.collectionsTasks.Passport;
 import net.products.collectionsTasks.Tasks;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
 
@@ -83,6 +81,20 @@ public class Main {
 
         System.out.println("Задания на коллекции");
         Tasks.task3_2();
+
+        System.out.println("Задание с паспортом");
+
+        var petrov = new Passport(151515, "Петров", "Иван", "Максимович", "1998-05-05");
+        var ivanov = new Passport(565656, "Иванов", "Петр", "Ильич", "1981-09-08");
+        var sidorov = new Passport(989898, "Сидоров", "Илья", "Иванович", "1985-01-22");
+
+        HashMap<Integer, Passport> passports = new HashMap<>();
+        passports.put(petrov.getPassNumber(), petrov);
+        passports.put(ivanov.getPassNumber(), ivanov);
+        passports.put(sidorov.getPassNumber(), sidorov);
+
+        System.out.println(passports.get(565656));
+        System.out.println(passports.get(5865656));
     }
 
     private static void addToRecipes(Set<Recipe> recipes, Recipe recipe) {
