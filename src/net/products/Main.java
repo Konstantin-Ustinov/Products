@@ -50,28 +50,25 @@ public class Main {
         System.out.println("Создаем список рецептов");
 
         Set<Recipe> recipes = new HashSet<>();
-        try {
-            Recipe potato = new Recipe("Картофель в мундире",
-                    new Product[]{ProductList.getProduct("Картофель"),
-                            ProductList.getProduct("Молоко"),
-                            ProductList.getProduct("Сыр")});
-            Recipe sweet = new Recipe("Сладкое",
-                    new Product[]{ProductList.getProduct("Апельсин"),
-                            ProductList.getProduct("Манго"),
-                            ProductList.getProduct("Папайя")});
-            Recipe fruits = new Recipe("Фрукты",
-                    new Product[]{ProductList.getProduct("Апельсин"),
-                            ProductList.getProduct("Манго"),
-                            ProductList.getProduct("Папайя")});
 
-           addToRecipes(recipes, potato);
-           addToRecipes(recipes, sweet);
-           addToRecipes(recipes, potato);
-           addToRecipes(recipes, fruits);
+        Recipe potato = new Recipe("Картофель в мундире");
+        potato.setProduct(ProductList.getProduct("Картофель"), 5);
+        potato.setProduct(ProductList.getProduct("Сыр"), 1);
+        potato.setProduct(ProductList.getProduct("Молоко"), 3);
+        Recipe sweet = new Recipe("Сладкое");
+        sweet.setProduct(ProductList.getProduct("Апельсин"), 8);
+        sweet.setProduct(ProductList.getProduct("Манго"), 5);
+        sweet.setProduct(ProductList.getProduct("Папайя"), 7);
+        Recipe fruits = new Recipe("Фрукты");
+        fruits.setProduct(ProductList.getProduct("Апельсин"), 8);
+        fruits.setProduct(ProductList.getProduct("Манго"), 5);
+        fruits.setProduct(ProductList.getProduct("Папайя"), 7);
 
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        addToRecipes(recipes, potato);
+        addToRecipes(recipes, sweet);
+        addToRecipes(recipes, potato);
+        addToRecipes(recipes, fruits);
+
 
         System.out.println("Выводим все рецепты:");
         System.out.println(recipes);

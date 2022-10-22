@@ -1,28 +1,16 @@
 package net.products;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Recipe {
     private String name;
-    private double summaryCost = 0;
-    private Set<Product> products = new HashSet<>();
+    private HashMap<Product, Integer> products = new HashMap<>();
 
-    public Recipe(String name, Product[] products) {
+    public Recipe(String name) {
         if (name != null && !"".equals(name)) {
             this.name = name;
         } else {
             throw new IllegalArgumentException("Рецепт не может быть без названия");
-        }
-        if (products != null) {
-            this.products.addAll(Arrays.asList(products));
-            for (Product product : products) {
-                this.summaryCost += product.getCost();
-            }
-        } else {
-            throw new IllegalArgumentException("Рецепт не может быть без продуктов");
         }
     }
 
@@ -31,18 +19,35 @@ public class Recipe {
     }
 
     public double getSummaryCost() {
+
+        double summaryCost = 0;
+
+        Set<Product> productSet = new HashSet<>(products.keySet());
+        for (Product product : productSet) {
+            summaryCost += product.getCost() * products.get(product);
+        }
         return summaryCost;
     }
 
-    public Set<Product> getProducts() {
+    public HashMap<Product, Integer> getProducts() {
         return products;
+    }
+
+    // Объеденил задание 1-2 и 1-3.
+    public void setProduct(Product product, Integer count) {
+        count = Math.max(count, 1);
+        if (!Objects.equals(products.get(product), count)) {
+            products.put(product, count);
+        } else {
+            throw new IllegalArgumentException("Такой продуктс таким количеством уже есть в рецепте");
+        }
     }
 
     @Override
     public String toString() {
         return "Recipe{" +
                 "name='" + name + '\'' +
-                ", summaryCost=" + summaryCost +
+                ", summaryCost=" + getSummaryCost() +
                 ", products=" + products +
                 '}';
     }
@@ -52,11 +57,11 @@ public class Recipe {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Recipe recipe = (Recipe) o;
-        return Double.compare(recipe.summaryCost, summaryCost) == 0 && name.equals(recipe.name) && products.equals(recipe.products);
+        return name.equals(recipe.name) && products.equals(recipe.products);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, summaryCost, products);
+        return Objects.hash(name, products);
     }
 }
