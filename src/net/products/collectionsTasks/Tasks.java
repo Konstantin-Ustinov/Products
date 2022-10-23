@@ -38,4 +38,38 @@ public class Tasks {
 
         System.out.println(telephoneDirectory);
     }
+
+    public static void task3_2_1() {
+        Map<String, List<Integer>> firstMap = new HashMap<>();
+
+        var random = new Random();
+        for (int i = 1; i <= 5; i++) {
+            firstMap.put("String" + i, new ArrayList<>(List.of(random.nextInt(1000), random.nextInt(1000), random.nextInt(1000))));
+        }
+
+        System.out.println("firstMap = " + firstMap);
+
+        Map<String, Integer> secondMap = new HashMap<>();
+
+        for (var element : firstMap.entrySet()) {
+            String key = element.getKey();
+            Integer value = element.getValue().get(0) + element.getValue().get(1) + element.getValue().get(2);
+            secondMap.put(key, value);
+        }
+
+        System.out.println("secondMap = " + secondMap);
+    }
+
+    public static void task3_2_2() {
+        var linkedMap = new LinkedHashMap<String, Integer>();
+
+        var random = new Random();
+        for (int i = 1; i <= 10; i++) {
+            linkedMap.put("String" + i, random.nextInt(1000));
+        }
+
+        linkedMap.forEach((k, v) -> {
+            System.out.println(k + ":" + v);
+        });
+    }
 }

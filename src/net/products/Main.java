@@ -85,7 +85,7 @@ public class Main {
         var ivanov = new Passport(565656, "Иванов", "Петр", "Ильич", "1981-09-08");
         var sidorov = new Passport(989898, "Сидоров", "Илья", "Иванович", "1985-01-22");
 
-        HashMap<Integer, Passport> passports = new HashMap<>();
+        Map<Integer, Passport> passports = new HashMap<>();
         passports.put(petrov.getPassNumber(), petrov);
         passports.put(ivanov.getPassNumber(), ivanov);
         passports.put(sidorov.getPassNumber(), sidorov);
@@ -95,6 +95,12 @@ public class Main {
 
         System.out.println("3 урок задание 1");
         Tasks.telephoneDirectory();
+
+        System.out.println("3 урок задание 3 - 2 - 1");
+        Tasks.task3_2_1();
+
+        System.out.println("3 урок задание 3 - 2 - 2");
+        Tasks.task3_2_2();
     }
 
     private static void addToRecipes(Set<Recipe> recipes, Recipe recipe) {
@@ -114,7 +120,7 @@ public class Main {
         System.out.println(set);
         System.out.println("Множество без нечетных");
 
-        set.removeIf(integer -> integer % 2 == 0);
+        set.removeIf(integer -> integer % 2 != 0);
         System.out.println(set);
     }
 }

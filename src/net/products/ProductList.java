@@ -48,7 +48,7 @@ public class ProductList {
 
     public static void setBay(String productName) {
         if (productName != null && !"".equals(productName)) {
-            Product product = productList.getOrDefault(productName, null);
+            Product product = productList.get(productName);
             if (product != null) {
                 product.setBayed(true);
                 System.out.println("Продукт: " + product.getName() + " помечен купленным.");
