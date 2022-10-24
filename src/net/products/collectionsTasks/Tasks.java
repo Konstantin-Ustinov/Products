@@ -3,6 +3,9 @@ package net.products.collectionsTasks;
 import java.util.*;
 
 public class Tasks {
+
+    private static Map<String, Integer> mapForTask3_1_3 = new HashMap<>();
+
     public static void task3_2() {
         Random random = new Random();
         Set<String> set = new HashSet<>();
@@ -39,6 +42,14 @@ public class Tasks {
         System.out.println(telephoneDirectory);
     }
 
+    public static void task3_1_3(String key, Integer value) {
+        if (!Objects.equals(mapForTask3_1_3.get(key), value)) {
+            mapForTask3_1_3.put(key, value);
+        } else {
+            throw new IllegalArgumentException("Такая пара ключ-значение уже есть в мапе");
+        }
+    }
+
     public static void task3_2_1() {
         Map<String, List<Integer>> firstMap = new HashMap<>();
 
@@ -71,5 +82,9 @@ public class Tasks {
         linkedMap.forEach((k, v) -> {
             System.out.println(k + ":" + v);
         });
+    }
+
+    public static Map<String, Integer> getMapForTask3_1_3() {
+        return mapForTask3_1_3;
     }
 }

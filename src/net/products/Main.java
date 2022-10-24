@@ -96,6 +96,20 @@ public class Main {
         System.out.println("3 урок задание 1");
         Tasks.telephoneDirectory();
 
+        System.out.println("3 урок задание 1-3");
+        Tasks.getMapForTask3_1_3().put("str1", 1);
+        Tasks.getMapForTask3_1_3().put("str2", 2);
+        Tasks.getMapForTask3_1_3().put("str3", 3);
+
+        try {
+            Tasks.task3_1_3("str2", 2);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        System.out.println("Tasks.getMapForTask3_1_3() = " + Tasks.getMapForTask3_1_3());
+
         System.out.println("3 урок задание 3 - 2 - 1");
         Tasks.task3_2_1();
 

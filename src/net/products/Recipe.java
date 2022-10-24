@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Recipe {
     private String name;
-    private HashMap<Product, Integer> products = new HashMap<>();
+    private Map<Product, Integer> products = new HashMap<>();
 
     public Recipe(String name) {
         if (name != null && !"".equals(name)) {
@@ -29,7 +29,7 @@ public class Recipe {
         return summaryCost;
     }
 
-    public HashMap<Product, Integer> getProducts() {
+    public Map<Product, Integer> getProducts() {
         return products;
     }
 
@@ -39,7 +39,7 @@ public class Recipe {
         if (!Objects.equals(products.get(product), count)) {
             products.put(product, count);
         } else {
-            throw new IllegalArgumentException("Такой продуктс таким количеством уже есть в рецепте");
+            throw new IllegalArgumentException("Такой продукт с таким количеством уже есть в рецепте");
         }
     }
 
